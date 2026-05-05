@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Transcription": {
+      "title": "Transcription",
+      "description": "A video transcription and its translation saved by a user.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The user ID of the owner."
+        },
+        "originalText": {
+          "type": "string",
+          "description": "The original transcribed text."
+        },
+        "translatedText": {
+          "type": "string",
+          "description": "The translated text."
+        },
+        "targetLanguage": {
+          "type": "string",
+          "description": "The language the text was translated to."
+        },
+        "createdAt": {
+          "type": "timestamp",
+          "description": "When the transcription was saved."
+        }
+      },
+      "required": ["uid", "originalText", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/transcriptions/{transcriptionId}": {
+      "schema": {
+        "$ref": "#/entities/Transcription"
+      },
+      "description": "Stores user transcriptions."
+    }
+  }
+}
